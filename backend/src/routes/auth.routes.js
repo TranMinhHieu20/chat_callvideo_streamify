@@ -10,8 +10,8 @@ router.post('/logout', logout)
 router.post('/onboarding', protectAuthenticated, onboard)
 
 router.get('/getAllUsers', getAllUsers)
-router.get('/check', protectAuthenticated, (req, res) => {
-  res.status(200).json(req.user)
+router.get('/me', protectAuthenticated, (req, res) => {
+  res.status(200).json({ user: req.user })
 })
 
 export default router

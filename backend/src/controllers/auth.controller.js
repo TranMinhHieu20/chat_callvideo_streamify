@@ -154,7 +154,7 @@ export async function onboard(req, res) {
 // GET ALL USERS
 export async function getAllUsers(_, res) {
   try {
-    const getAllUsers = await User.find().select('fullName email profilePic createdAt updatedAt').
+    const getAllUsers = await User.find().select('fullName email profilePic createdAt updatedAt')
 
     res.status(200).json(getAllUsers)
   } catch (error) {
