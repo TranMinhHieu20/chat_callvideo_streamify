@@ -1,22 +1,15 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ShipWheelIcon, Eye, EyeOff } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { signup } from '../lib/api.js'
+import { useThemeStore } from '../store/useThemeStore.js'
+import { useSignup } from '../hooks/useSignup.js'
 
 const SignUpPage = () => {
   const [signupData, setSignupData] = useState({ fullName: '', email: '', password: '' })
   const [showPassword, setShowPassword] = useState(false)
 
-  const queryClient = useQueryClient()
-  const {
-    mutate: signupMutation,
-    isPending,
-    error
-  } = useMutation({
-    mutationFn: signup,
-    onSuccess: () => queryClient.invalidateQueries(['authUser'])
-  })
+  const { theme } = useThemeStore()
+  const { signupMutation, error, isPending } = useSignup()
 
   const handleSignup = (e) => {
     e.preventDefault()
@@ -24,7 +17,7 @@ const SignUpPage = () => {
     signupMutation(signupData)
   }
   return (
-    <div className="h-screen flex items-center justify-center p-4 sm:p-6 md:p-8" data-theme="forest">
+    <div className="h-screen flex items-center justify-center p-4 sm:p-6 md:p-8" data-theme={theme}>
       <div className="border border-primary/25 flex flex-col lg:flex-row w-full max-w-5xl mx-auto bg-base-100 rounded-xl shadow-lg overflow-hidden">
         {/* SIDE LEFT */}
         <div className="w-full lg:w-1/2 p-4 sm:p-8 flex flex-col">
