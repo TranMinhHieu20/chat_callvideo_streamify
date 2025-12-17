@@ -124,7 +124,7 @@ const SignUpPage = () => {
 
               <div className="text-center mt-4">
                 <p className="text-sm">
-                  Already haven't an account?{' '}
+                  Already have an account?{' '}
                   <Link to="/login" className="text-primary hover:underline">
                     Sign in
                   </Link>

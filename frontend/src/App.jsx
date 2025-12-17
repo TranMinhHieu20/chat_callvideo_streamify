@@ -10,6 +10,7 @@ import NotificationsPage from './pages/NotificationsPage'
 import NotFoundPage from './pages/NotFoundPage'
 import PageLoader from './components/PageLoader.jsx'
 import useAuthUser from './hooks/useAuthUser.js'
+import Layout from './components/Layout.jsx'
 
 function App() {
   const { isLoading, authUser } = useAuthUser()
@@ -22,13 +23,15 @@ function App() {
   }
 
   return (
-    <div className="h-screen" data-theme="night">
+    <div className="h-screen" data-theme="dark">
       <Routes>
         <Route
           path="/"
           element={
             isAuthenticated && isOnBoarded ? (
-              <HomePage />
+              <Layout showSidebar={true}>
+                <HomePage />
+              </Layout>
             ) : (
               <Navigate to={!isAuthenticated ? '/login' : '/onboarding'} />
             )
@@ -44,7 +47,18 @@ function App() {
         />
         <Route path="/chat" element={isAuthenticated ? <ChatPage /> : <Navigate to={'/login'} />} />
         <Route path="/call" element={isAuthenticated ? <CallPage /> : <Navigate to={'/login'} />} />
-        <Route path="/notifications" element={isAuthenticated ? <NotificationsPage /> : <Navigate to={'/login'} />} />
+        <Route
+          path="/notifications"
+          element={
+            isAuthenticated ? (
+              <Layout showSidebar={true}>
+                <NotificationsPage />
+              </Layout>
+            ) : (
+              <Navigate to={'/login'} />
+            )
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
