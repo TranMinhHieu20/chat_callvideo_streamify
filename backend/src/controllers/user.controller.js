@@ -10,10 +10,7 @@ export async function getRecommendedUsers(req, res) {
       $and: [{ _id: { $ne: currentUserId } }, { _id: { $nin: currentUser.friends } }, { isOnBoarded: true }]
     }).select('-password')
 
-    res.status(200).json({
-      success: true,
-      users: recommendedUsers
-    })
+    res.status(200).json(recommendedUsers)
   } catch (error) {
     console.log('Error getRecommendedUsers in controller', error)
     res.status(500).json({ message: 'Internal server error' })
@@ -70,10 +67,7 @@ export async function sendFriendRequest(req, res) {
       recipient: recipientId
     })
 
-    res.status(201).json({
-      success: true,
-      friendRequest
-    })
+    res.status(201).json(friendRequest)
   } catch (error) {
     console.log('Error sendFriendRequest in controller', error)
     res.status(500).json({ message: 'Internal server error' })
@@ -104,7 +98,7 @@ export async function acceptFriendRequest(req, res) {
       $addToSet: { friends: friendRequest.sender }
     })
 
-    res.status(200).json({ success: true, message: 'Friend request accepted' })
+    res.status(200).json({ message: 'Friend request accepted' })
   } catch (error) {
     console.log('Error acceptFriendRequest in controller', error)
     res.status(500).json({ message: 'Internal server error' })
@@ -123,9 +117,8 @@ export async function getFriendRequests(req, res) {
     )
 
     res.status(200).json({
-      success: true,
-      incomingReqs: incomingReqs,
-      acceptedReqs: acceptedReqs
+      incomingReqs,
+      acceptedReqs
     })
   } catch (error) {
     console.log('Error getFriendRequests in controller', error)
@@ -140,10 +133,7 @@ export async function getOutgoingFriendRequests(req, res) {
       'fullName profilePic nativeLanguage learningLanguage'
     )
 
-    res.status(200).json({
-      success: true,
-      outgoingReqs: outgoingReqs
-    })
+    res.status(200).json(outgoingReqs)
   } catch (error) {
     console.log('Error getOutgoingFriendRequests in controller', error)
     res.status(500).json({ message: 'Internal server error' })

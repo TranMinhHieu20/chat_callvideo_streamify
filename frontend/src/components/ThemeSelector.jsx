@@ -35,8 +35,8 @@ const ThemeSelector = () => {
               </span>
               {/* THEME PREVIEW */}
               <div className="ml-auto flex gap-1">
-                {themeOptions.colors.map((color) => (
-                  <div key={color} className="size-2 rounded-full " style={{ backgroundColor: color }} />
+                {themeOptions.colors.map((color, index) => (
+                  <div key={index} className="size-2 rounded-full " style={{ backgroundColor: color }} />
                 ))}
               </div>
             </button>
