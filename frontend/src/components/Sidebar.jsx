@@ -3,6 +3,7 @@ import useAuthUser from '../hooks/useAuthUser.js'
 import { HomeIcon, ShipWheelIcon, Bell, UsersIcon } from 'lucide-react'
 
 const Sidebar = () => {
+  // eslint-disable-next-line
   const { isLoading, authUser } = useAuthUser()
   const location = useLocation()
   const currentPath = location.pathname
