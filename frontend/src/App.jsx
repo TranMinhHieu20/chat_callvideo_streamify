@@ -53,12 +53,12 @@ function App() {
         <Route
           path="/notifications"
           element={
-            isAuthenticated ? (
+            isAuthenticated && isOnBoarded ? (
               <Layout showSidebar={true}>
                 <NotificationsPage />
               </Layout>
             ) : (
-              <Navigate to={'/login'} />
+              <Navigate to={!isAuthenticated ? '/login' : '/onboarding'} />
             )
           }
         />
