@@ -161,6 +161,7 @@ import { CheckCircleIcon, MapPinIcon, UserPlusIcon, UsersIcon } from 'lucide-rea
 
 import FriendCard, { getLanguageFlag } from '../components/FriendCard'
 import NoFriendsFound from '../components/NoFriendsFound'
+import { capitalize } from '../lib/util'
 
 const HomePage = () => {
   const queryClient = useQueryClient()
@@ -192,6 +193,7 @@ const HomePage = () => {
       outgoingFriendReqs.forEach((req) => {
         outgoingIds.add(req.recipient._id)
       })
+      // eslint-disable-next-line
       setOutgoingRequestsIds(outgoingIds)
     }
   }, [outgoingFriendReqs])
@@ -309,5 +311,3 @@ const HomePage = () => {
 }
 
 export default HomePage
-
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1)
