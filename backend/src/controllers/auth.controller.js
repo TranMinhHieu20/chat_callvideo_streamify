@@ -88,7 +88,7 @@ export async function login(req, res) {
 // LOGOUT
 export async function logout(_, res) {
   try {
-    res.clearCookie('jwtHieu', {
+    res.clearCookie('jwt', {
       maxAge: 0,
       httpOnly: true,
       sameSite: 'strict',

@@ -75,7 +75,11 @@ const OnBoardingPage = () => {
               {/* IMAGE PREVIEW */}
               <div className="size-32 rounded-full bg-base-300 overflow-hidden">
                 {formState.profilePic ? (
-                  <img src={formState.profilePic} alt="Profile Preview" className="w-full h-full object-cover" />
+                  <img
+                    src={formState.profilePic || '/avatar.png'}
+                    alt="Profile Preview"
+                    className="w-full h-full object-cover"
+                  />
                 ) : (
                   <div className="h-full flex items-center justify-center ">
                     <CameraIcon className="size-12 text-base-content opacity-40" />
@@ -182,7 +186,7 @@ const OnBoardingPage = () => {
                   className="input input-bordered w-full pl-10"
                   name="location"
                   value={formState.location}
-                  onChange={(e) => setFormState({ ...formState, location: e.target.get })}
+                  onChange={(e) => setFormState({ ...formState, location: e.target.value })}
                   placeholder="City, Country"
                 />
               </div>

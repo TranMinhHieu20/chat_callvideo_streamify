@@ -7,7 +7,7 @@ const FriendCard = ({ friend }) => {
       <div className="card-body p-4">
         {/* USER INFO */}
         <div className="avatar rounded-full size-12 ">
-          <img src={friend.profilePic} alt="avatar" />
+          <img src={friend.profilePic || '/avatar.png'} alt="avatar" />
         </div>
         <h3 className="font-semibold truncate">{friend.fullName}</h3>
       </div>
@@ -23,7 +23,7 @@ const FriendCard = ({ friend }) => {
         </span>
       </div>
       {/* BTN */}
-      <Link to={`/chat/${friend._id}`} className="btn btn-outline w-full">
+      <Link to={`/chat/${friend._id}`} className="btn btn-outline w-full hover:btn-success">
         <span className="text">Message</span>
       </Link>
     </div>

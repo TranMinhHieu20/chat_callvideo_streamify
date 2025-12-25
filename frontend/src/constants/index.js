@@ -163,7 +163,6 @@ export const THEMES = [
 ]
 
 export const LANGUAGES = [
-  'VietNam',
   'Vietnamese',
   'English',
   'Spanish',
@@ -182,7 +181,6 @@ export const LANGUAGES = [
 ]
 
 export const LANGUAGE_TO_FLAG = {
-  VietNam: 'vn',
   vietnamese: 'vn',
   english: 'gb',
   spanish: 'es',
