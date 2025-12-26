@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import { LANGUAGE_TO_FLAG } from '../constants'
 
 const FriendCard = ({ friend }) => {
+  console.log(friend)
   return (
     <div className="card bg-base-200 hover:shadow-md transition-shadow">
       <div className="card-body p-4">
         {/* USER INFO */}
-        <div className="avatar rounded-full size-12 ">
-          <img src={friend.profilePic || '/avatar.png'} alt="avatar" />
+        <div className="avatar size-12 rounded-full  ">
+          <img src={friend.profilePic || '/avatar.png'} alt="avatar" className="rounded-full" />
         </div>
         <h3 className="font-semibold truncate">{friend.fullName}</h3>
       </div>
