@@ -48,7 +48,11 @@ const NotificationsPage = () => {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <div className="avatar size-16 rounded-full">
-                              <img src={request.sender.profilePic} alt={request.sender.fullName} />
+                              <img
+                                src={request.sender.profilePic}
+                                alt={request.sender.fullName}
+                                className="rounded-full"
+                              />
                             </div>
                             <div>
                               <h3 className="font-semibold">{request.sender.fullName}</h3>
@@ -94,7 +98,11 @@ const NotificationsPage = () => {
                       <div className="card-body p-4">
                         <div className="flex items-center gap-3">
                           <div className="avatar size-16 rounded-full">
-                            <img src={notification.recipient.profilePic} alt={notification.recipient.fullName} />
+                            <img
+                              src={notification.recipient.profilePic}
+                              alt={notification.recipient.fullName}
+                              className="rounded-full"
+                            />
                           </div>
                           <div className="flex justify-between flex-1">
                             <div>
