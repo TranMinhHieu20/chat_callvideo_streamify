@@ -6,6 +6,9 @@ import authRoutes from './routes/auth.routes.js'
 import userRoutes from './routes/user.routes.js'
 import chatRoutes from './routes/chat.routes.js'
 import { connectDB } from './lib/db.js'
+import path from 'path'
+
+const __dirname = path.resolve()
 
 const app = express()
 const PORT = process.env.PORT
@@ -18,6 +21,14 @@ app.use(cookieParser()) // parse cookie tu request header
 app.use('/api/auth', authRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/chat', chatRoutes)
+
+// make ready for deployment
+if (process.env.NODE_ENV == 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')))
+  app.use('*', (_, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'dist', 'index.html'))
+  })
+}
 
 app.listen(PORT, () => {
   connectDB()
